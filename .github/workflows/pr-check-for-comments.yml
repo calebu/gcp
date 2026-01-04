@@ -1,0 +1,13 @@
+name: check-for-pr-comments
+on:
+  issue_comment:
+    types: [created, edited] # Trigger for new or edited comments 
+jobs: 
+  check-for-comments:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout current commit
+      with:
+        ref: main
+        path: main
