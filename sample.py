@@ -22,9 +22,6 @@ df = pd.DataFrame(data)
 print(df)
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     config = ''
-    with open('main/test.yml', 'r') as file:
-        config = yaml.safe_load(file)
-
     repo_check = f"""
 <html>
 	<body>
@@ -62,3 +59,4 @@ obj.append(dict)
 obj = json.dumps(obj, indent = 2)
 
 logger.info(f"{obj}")
+
