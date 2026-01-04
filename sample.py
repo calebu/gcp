@@ -5,6 +5,21 @@
 import sys, json, logging, yaml
 
 logger = logging.getLogger(__name__)
+
+import pandas as pd
+
+# Define a simple dictionary of data
+data = {
+    'Greeting': ["Hello", "World"],
+    'ID': [1, 2]
+}
+
+# Create a DataFrame
+# Pandas is usually imported under the 'pd' alias
+df = pd.DataFrame(data)
+
+# Print the DataFrame
+print(df)
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     config = ''
     with open('main/test.yml', 'r') as file:
@@ -47,18 +62,3 @@ obj.append(dict)
 obj = json.dumps(obj, indent = 2)
 
 logger.info(f"{obj}")
-
-import pandas as pd
-
-# Define a simple dictionary of data
-data = {
-    'Greeting': ["Hello", "World"],
-    'ID': [1, 2]
-}
-
-# Create a DataFrame
-# Pandas is usually imported under the 'pd' alias
-df = pd.DataFrame(data)
-
-# Print the DataFrame
-print(df)
