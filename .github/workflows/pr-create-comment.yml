@@ -14,7 +14,7 @@ jobs:
         ref: main
         path: main
     - name: Install GitPython package
-      run: echo '${{ github.ref }}' && echo '${{ github.head_ref }}' && pip install pandas, gitpython
+      run: echo '${{ github.head_ref }}' && pip install pandas gitpython
     - name: Create Comment
       if: steps.pr-changes.outputs.changes != '[]'
       run: |
