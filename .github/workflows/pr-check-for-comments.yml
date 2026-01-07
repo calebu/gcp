@@ -8,6 +8,7 @@ jobs:
     steps:
     - name: Check for comments
       run: |
-        echo "Hi"
+        echo "Hello"
       shell: bash
+
 
