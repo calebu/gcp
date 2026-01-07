@@ -1,0 +1,32 @@
+name: auto-comment-on-pr
+on: [pull_request]
+jobs: 
+  auto-comment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check PR Changes
+      id: pr-changes
+      run: echo "::set-output name=changes::${{ toJson(github.event.pull_request.changed_files) }}"
+
+    - uses: actions/checkout@v2
+      name: Checkout current commit
+      with:
+        ref: main
+        path: main
+    - name: Install GitPython package
+      run: echo '${{ github.head_ref }}' && pip install pandas gitpython
+    - name: Create Comment
+      if: steps.pr-changes.outputs.changes != '[]'
+      run: |
+        # Use GitHub API to create a comment on the PR
+        PR_NUMBER=${{ github.event.pull_request.number }}
+        COMMENT="<html><body><h4>Repo sync tool</h4>To use the sync tool, add a comment in the format below.<br><pre>\
+        action:sync<br>\
+        source:a_source<br>\
+        target:a_target\
+        </pre></body></html>"
+        GITHUB_TOKEN=${{ secrets.GHA_PAT }}
+        COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+
+        curl -s -H "Authorization: token ${GITHUB_TOKEN}" -X POST $COMMENT_URL -d "{\"body\":\"$COMMENT\"}"
+      

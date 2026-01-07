@@ -38,9 +38,6 @@ if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
 #print (len(sys.argv[1]))
 #print (f"From python code: {sys.argv[1]}")
 
-with open('main/test.yml', 'r') as file:
-    config = yaml.safe_load(file)
-
 f = open("tester.txt", "a")
 f.write("[]")
 f.close()
@@ -59,4 +56,5 @@ obj.append(dict)
 obj = json.dumps(obj, indent = 2)
 
 logger.info(f"{obj}")
+
 
