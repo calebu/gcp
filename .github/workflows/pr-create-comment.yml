@@ -20,8 +20,11 @@ jobs:
       run: |
         # Use GitHub API to create a comment on the PR
         PR_NUMBER=${{ github.event.pull_request.number }}
-        COMMENT="$(python3 ./main/sample.py check-changes)"
-        echo "The comment body is: $COMMENT"
+        COMMENT="<html><body><h4>Repo sync tool</h4>To use the sync tool, add a comment in the format below.<br><pre>\
+        action:sync<br>\
+        source:a_source<br>\
+        target:a_target\
+        </pre></body></html>"
         GITHUB_TOKEN=${{ secrets.GHA_PAT }}
         COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
 
