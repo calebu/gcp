@@ -6,8 +6,17 @@ jobs:
   check-for-comments:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      name: Checkout current commit
+      with:
+        ref: calebu-patch-1
+        path: main
+    - name: Install GitPython package
+      if: github.head_ref == 'bb'
+      run: pip install gitpython
     - name: Check for comments
+      if: github.head_ref == 'bb'
       run: |
-        echo "Hi"
+	  	COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+        python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}' '$COMMENT_URL'
       shell: bash
-
