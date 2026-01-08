@@ -13,4 +13,10 @@ jobs:
         path: main
     - name: Install GitPython package
       run: echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
+    - name: Check for comments
+      if: github.ref == 'refs/heads/sync'
+      run: |
+	  	echo "Hello"
+      shell: bash
+
 
