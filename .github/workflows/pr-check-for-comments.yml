@@ -9,8 +9,9 @@ jobs:
     - uses: actions/checkout@v2
       name: Checkout current commit
       with:
-        ref: main
+        ref: ${{ github.ref }}
         path: main
     - name: Install GitPython package
       run: echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
+
 
