@@ -12,4 +12,5 @@ jobs:
         ref: ${{ github.ref }}
         path: main
     - name: Install GitPython package
-      run: echo '${{ github.event.pull_request.head.ref }}'
+      run: echo '${{ github.event.pull_request }}'
+
