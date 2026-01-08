@@ -12,5 +12,5 @@ jobs:
         ref: calebu-patch-1
         path: main
     - name: Install GitPython package
-      if: github.head_ref == 'bb'
-      run: pip install gitpython
+      run: echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
+
