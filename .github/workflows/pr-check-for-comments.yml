@@ -1,7 +1,7 @@
 name: check-for-pr-comments
 on:
   issue_comment:
-    types: [created, edited] # Trigger for new or edited comments 
+    types: [created, edited] # Trigger for new or edited comments
 jobs: 
   check-for-comments:
     runs-on: ubuntu-latest
@@ -13,6 +13,7 @@ jobs:
         path: main
     - name: Install GitPython package
       run: echo '${{ github.event.pull_request.head.ref }}'
+
 
 
 
