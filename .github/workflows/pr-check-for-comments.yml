@@ -12,5 +12,5 @@ jobs:
         ref: main
         path: main
     - name: Install GitPython package
-      if: github.head_ref == 'bb'
-      run: pip install gitpython
+      run: echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
+
