@@ -20,7 +20,7 @@ def bq_backup():
            backup_file = 'gs://{}/{}/{}-*.avro'.format(gcs_bucket, datetime.now().strftime("%Y_%m_%d"), schema_obj['id'])
            backup_job = subprocess.run(['bq', 'extract', '--destination_format=AVRO', '--use_avro_logical_types', schema_obj['id'], backup_file], stdout=subprocess.PIPE, universal_newlines=True)
 	     # End if backup only tables
-       # End schema_obj for loop
+       # End schema_obj for loop..
      # End if len() check
    # End outer for
 
