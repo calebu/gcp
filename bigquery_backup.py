@@ -3,6 +3,7 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 import subprocess, json
 
+
 gcs_bucket = '<gcs bucket name>'
 default_arguments = {"owner": "<dag owner>", "retries": 0}
 
