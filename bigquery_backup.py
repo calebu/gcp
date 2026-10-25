@@ -20,7 +20,7 @@ def bq_backup():
            backup_job = subprocess.run(['bq', 'extract', '--destination_format=AVRO', '--use_avro_logical_types', schema_obj['id'], backup_file], stdout=subprocess.PIPE, universal_newlines=True)
 	     # End if backup only tables
        # End schema_obj for loop
-     # End if len() check
+     # End if len() check.
    # End outer for
 
 with DAG('bq_backup_dag', default_args = default_arguments, description='backup bigquery data to gcs bucket', schedule_interval='*/5 * * * *', start_date=datetime(2022, 7, 28), catchup=False) as dag:
@@ -28,4 +28,4 @@ with DAG('bq_backup_dag', default_args = default_arguments, description='backup 
 
 backup_task
 
-# 1
+# 2
